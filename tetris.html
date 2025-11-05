@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+</head>
+<main>
+    <button id="start" onClick="start">시작</button>
+    <div id="main_page"></div>
+</main>
+<script>
+    let main = [[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            ];
+
+    console.log(main[1][1]) //1출력
+
+    let Block_Y = 0; //내려가는 블록의 Y값
+
+    let main_page = main.join("\n");
+    console.log(main_page);
+
+    function start() {
+        //랜덤 블록 생성
+        //떨어지게하기 on
+    };
+
+    //떨어지게 하기
+    function downAnima() {
+        if(main[block1_location[0]][y])
+        setTimeout(block1 ,1000)
+    }
+
+    //블록 위치
+    block1_location = [0, 3] //0, 3은 처음위치
+    //블록 값
+    block1 = [[0, 1, 0],
+            [1, 1, 1]]
+
+    console.log('블록의 가로 길이 : ' + block1[block1.length - 1].length); //블록의 가로 길이
+    console.log('블록의 세로 길이 : ' + block1.length); //블록의 세로 길이
+    
+    //블록만큼 추출한 배열값
+    let a = main[Block_Y].slice(block1_location[1], block1_location[1] + block1[block1.length - 1].length);
+    console.log(a);
+
+    //console.log("a : " + a);
+    //console.log("block1 : " + block1[1]);
+
+
+    //블록 충돌 여부
+    function collision() {
+        if (a ^ block1[1] == block1[1]){
+        console.log("충돌 X");
+        downBlock();
+        //한칸 내리기
+    }
+        else {
+        console.log("출돌");
+        //한칸위에 블록 확정
+    }
+    };
+
+    function downBlock() {
+        console.log("블록 내리기 실행됨")
+        Block_Y += 1; //블록 한칸 내리기
+        a = main[Block_Y].slice(block1_location[1], block1_location[1] + block1[block1.length - 1].length); //연산자 업데이트
+        setTimeout(collision(), 50000);
+    }
+
+
+
+    //block1_location[1] : 블록 왼쪽 아래 좌표
+    //block1_location[1] + block1[block1.length - 1].length : 좌표 + 블록길이
+
+
+    collision();
+
+</script>
+
